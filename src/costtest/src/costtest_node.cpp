@@ -39,8 +39,10 @@ int main(int argc, char** argv) {
 		index_y = strtol(argv[2],&p,10);
 		}
 	tf::TransformListener tf(ros::Duration(10));
-	costmapROS costmap("test_costmap", tf);
-	test_map = *costmap.getCostmap();
-	ROS_INFO("Value is %s", test_map.getCost(index_x,index_y));
+	costmapROS costmap1("test_costmap", tf);
+	test_map = *costmap1.getCostmap();
+	ROS_INFO("Value is %d", test_map.getCost(index_x,index_y));
+	costmap1.~Costmap2DROS();
+	test_map.~Costmap2D();
 return 0;
 }
